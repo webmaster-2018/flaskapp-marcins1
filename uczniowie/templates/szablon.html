@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block tytul %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+
+      <header class="masthead">
+        <div class="inner">
+          <h3 class="masthead-brand">Aplikacja "Uczniowie"</h3>
+
+          <!-- Navigation -->
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="{{ url_for('index') }}">Strona główna</a>
+            <a class="nav-link" href="#">-</a>
+          </nav>
+
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">{% block h1 %}{% endblock %}</h1>
+        {% block tresc %}{% endblock %}
+      </main>
+
+      <!-- Footer -->
+      <footer class="mastfoot mt-auto">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <p>Wszelkie prawa zastrzeżone</p>
+            </div>
+            <div class="col">
+              <p>Cover template by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+  </body>
+</html>
