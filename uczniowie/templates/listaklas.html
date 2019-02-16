@@ -3,11 +3,23 @@
 {% block lista2 %} active{% endblock %}
 {% block h1 %}Klasy:{% endblock %}
 {% block tresc %}
-<ol>
-  {% for k in klasy %}
-    <li>
-      {{ k.nazwa }}
-    </li>
-  {% endfor %}
-</ol>
+<table class="table table-striped table-dark">
+<thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Nazwa</th>
+    <th scope="col">Rok naboru</th>
+    <th scope="col">Rok matury</th>
+  </tr>
+</thead>
+  <tbody>
+    {% for k in klasy %}
+    <tr>
+      <th scope="row">{{ k }}</th>
+      <td>{{ k.nazwa }}</td>
+      <td>{{ k.roknaboru }}</td>
+      <td>{{ k.rokmatury }}</td>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

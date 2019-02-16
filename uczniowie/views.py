@@ -14,18 +14,18 @@ def index():
     return render_template('index.html')
 
 @app.route("/dodajklase", methods=['GET', 'POST'])
-def dodaj():
+def dodajklase():
     """Dodawanie klasy"""
     form = dKlaseForm()
 
     if form.validate_on_submit():
         Klasa(nazwa=form.nazwa.data, roknaboru=form.roknaboru.data, rokmatury=form.rokmatury.data).save()
-        return redirect(url_for('index'))
+        return redirect(url_for('listaklas'))
 
     return render_template('dodajklase.html', form=form)
 
 @app.route("/listaklas")
-def lista():
+def listaklas():
     klasy = Klasa.select()
     return render_template('listaklas.html', klasy=klasy)
 
@@ -43,6 +43,6 @@ def dodajucznia():
 
     if form.validate_on_submit():
         Uczen(imie=form.imie.data, nazwisko=form.nazwisko.data, plec=form.plec.data, klasa=form.klasa.data).save()
-        return redirect(url_for('index'))
+        return redirect(url_for('listauczniow'))
 
     return render_template('dodajucznia.html', form=form)
