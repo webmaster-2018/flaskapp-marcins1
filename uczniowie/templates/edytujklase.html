@@ -1,0 +1,37 @@
+{% extends "szablon.html" %}
+{% block tytul %}Edycja klasy{% endblock %}
+{% block h1 %}Edycja klasy {{ iducznia.nazwa }}{% endblock %}
+{% block tresc %}
+<p class="lead">Aktualne dane klasy:</p>
+<table class="table table-striped table-dark">
+<thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Nazwa</th>
+    <th scope="col">Rok naboru</th>
+    <th scope="col">Rok matury</th>
+  </tr>
+</thead>
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+      <td>{{ iducznia.nazwa }}</td>
+      <td>{{ iducznia.roknaboru }}</td>
+      <td>{{ iducznia.rokmatury }}</td>
+  </tbody>
+</table>
+<br><br>
+  <p class="lead">Tutaj wprowadź nowe dane:</p>
+  <form method="POST">
+  {{ form.csrf_token }}
+  {{ form.nazwa.label }}
+  {{ form.nazwa(class="form-control") }}
+  <br>
+  {{ form.roknaboru.label }}
+  {{ form.roknaboru(class="form-control") }}
+  <br>
+  {{ form.rokmatury.label }}
+  {{ form.rokmatury(class="form-control") }}
+  <br>
+  <input type="submit" class="btn btn-info" value="Prześlij" style="float: right;">
+{% endblock %}

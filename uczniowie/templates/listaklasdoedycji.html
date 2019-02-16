@@ -1,7 +1,7 @@
 {% extends "szablon.html" %}
-{% block tytul %}Lista klas{% endblock %}
-{% block lista2 %} active{% endblock %}
-{% block h1 %}Klasy:{% endblock %}
+{% block tytul %}Edycja klas{% endblock %}
+{% block lista6 %} active{% endblock %}
+{% block h1 %}Wybierz klasę którą chcesz edytować:{% endblock %}
 {% block tresc %}
 <table class="table table-striped table-dark">
 <thead>
@@ -10,6 +10,7 @@
     <th scope="col">Nazwa</th>
     <th scope="col">Rok naboru</th>
     <th scope="col">Rok matury</th>
+    <th scope="col"></th>
   </tr>
 </thead>
   <tbody>
@@ -19,6 +20,7 @@
       <td>{{ k.nazwa }}</td>
       <td>{{ k.roknaboru }}</td>
       <td>{{ k.rokmatury }}</td>
+      <td style="width: 7%; padding: 0.7%"><a href="edycjaklasy/{{ k }}"><button type="button" class="btn btn-outline-info btn-sm">Edytuj</button></a></td>
     </tr>
     {% endfor %}
   </tbody>
