@@ -1,0 +1,12 @@
+{% extends "szablon.html" %}
+{% block tytul %}Lista klas{% endblock %}
+{% block h1 %}Klasy:{% endblock %}
+{% block tresc %}
+<ol>
+  {% for k in klasy %}
+    <li>
+      {{ k.nazwa }}
+    </li>
+  {% endfor %}
+</ol>
+{% endblock %}
