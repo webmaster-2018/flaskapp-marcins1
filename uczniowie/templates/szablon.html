@@ -24,8 +24,9 @@
 
           <!-- Navigation -->
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="{{ url_for('index') }}">Strona główna</a>
-            <a class="nav-link" href="#">-</a>
+            <a class="nav-link{% block lista1 %}{% endblock %}" href="{{ url_for('index') }}">Strona główna</a>
+            <a class="nav-link{% block lista2 %}{% endblock %}" href="{{ url_for('lista') }}">Lista Klas</a>
+            <a class="nav-link{% block lista3 %}{% endblock %}" href="{{ url_for('dodaj') }}">Dodaj Klase</a>
           </nav>
 
         </div>
