@@ -1,0 +1,23 @@
+{% extends "szablon.html" %}
+{% block tytul %}Dodawanie ucznia{% endblock %}
+{% block lista5 %} active{% endblock %}
+{% block h1 %}Dodaj ucznia:{% endblock %}
+{% block tresc %}
+<div class="container">
+  <form method="POST">
+    {{ form.csrf_token }}
+    {{ form.imie.label }}
+    {{ form.imie(class="form-control") }}
+    <br>
+    {{ form.nazwisko.label }}
+    {{ form.nazwisko(class="form-control") }}
+    <br>
+    {{ form.plec.label }}
+    {{ form.plec(class="form-control") }}
+    <br>
+    {{ form.klasa.label }}
+    {{ form.klasa(class="form-control") }}
+    <br>
+  <input type="submit" class="btn btn-info" value="Prześlij" style="float: right;">
+</div>
+{% endblock %}
