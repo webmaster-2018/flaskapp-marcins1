@@ -1,0 +1,35 @@
+{% extends "szablon.html" %}
+{% block tytul %}Lista uczniów{% endblock %}
+{% block lista7 %} active{% endblock %}
+{% block h1 %}Uczniowie:{% endblock %}
+{% block tresc %}
+<table class="table table-striped table-dark">
+<thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Imie</th>
+    <th scope="col">Nazwisko</th>
+    <th scope="col">Pleć</th>
+    <th scope="col">Klasa</th>
+    <th scope="col"></th>
+  </tr>
+</thead>
+  <tbody>
+    {% for u in uczniowie %}
+    <tr>
+      <th scope="row">{{ u }}</th>
+      <td>{{ u.imie }}</td>
+      <td>{{ u.nazwisko }}</td>
+      {% if u.plec %}
+      <td>Kobieta</td>
+      {% else %}
+      <td>Mężczyzna</td>
+      {% endif %}
+      <td>{{ u.klasa.nazwa }}</td>
+      <td style="width: 7%; padding: 0.7%"><a href="edycjaucznia/{{ u }}"><button type="button" class="btn btn-outline-info btn-sm">Edytuj</button></a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

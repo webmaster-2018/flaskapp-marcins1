@@ -72,3 +72,32 @@ def edytujklase(kid):
     return redirect(url_for('listaklas'))
 
   return render_template('edytujklase.html', form=form, iducznia=k)
+
+@app.route("/edycjaucznia")
+def listauczniowdoedycji():
+    uczen = Uczen.select()
+    return render_template('listauczniowdoedycji.html', uczniowie=uczen)
+
+def get_ucznia_or_404(uid):
+    try:
+        u = Uczen.get_by_id(uid)
+        return u
+    except Uczen.DoesNotExist:
+        abort(404)
+
+@app.route("/edycjaucznia/<int:uid>", methods=['GET', 'POST'])
+def edytujucznia(uid):
+  u = get_ucznia_or_404(uid)
+  form = dUczniaForm()
+  form.klasa.choices = [(u.id, u.nazwa) for u in Klasa.select()]
+  form.plec.choices = [(0, "Mężczyzna"), (1, "Kobieta")]
+
+  if form.validate_on_submit():
+    u.imie = form.imie.data
+    u.nazwisko = form.nazwisko.data
+    u.plec = form.plec.data
+    u.klasa = form.klasa.data
+    u.save()
+    return redirect(url_for('listauczniow'))
+
+  return render_template('edytujucznia.html', form=form, iducznia=u)

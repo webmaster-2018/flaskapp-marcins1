@@ -1,0 +1,45 @@
+{% extends "szablon.html" %}
+{% block tytul %}Edycja ucznia{% endblock %}
+{% block lista7 %} active{% endblock %}
+{% block h1 %}Edycja ucznia {{ iducznia.imie }}{% endblock %}
+{% block tresc %}
+<p class="lead">Aktualne dane ucznia:</p>
+<table class="table table-striped table-dark">
+<thead>
+  <tr>
+    <th scope="col">Imię</th>
+    <th scope="col">Nazwisko</th>
+    <th scope="col">Płeć</th>
+    <th scope="col">Klasa</th>
+  </tr>
+</thead>
+  <tbody>
+    <tr>
+      <td>{{ iducznia.imie }}</td>
+      <td>{{ iducznia.nazwisko }}</td>
+      {% if iducznia.plec %}
+      <td>Kobieta</td>
+      {% else %}
+      <td>Mężczyzna</td>
+      {% endif %}
+      <td>{{ iducznia.klasa.nazwa }}</td>
+  </tbody>
+</table>
+<br><br>
+  <p class="lead">Tutaj wprowadź nowe dane:</p>
+  <form method="POST">
+  {{ form.csrf_token }}
+  {{ form.imie.label }}
+  {{ form.imie(class="form-control") }}
+  <br>
+  {{ form.nazwisko.label }}
+  {{ form.nazwisko(class="form-control") }}
+  <br>
+  {{ form.plec.label }}
+  {{ form.plec(class="form-control") }}
+  <br>
+  {{ form.klasa.label }}
+  {{ form.klasa(class="form-control") }}
+  <br>
+  <input type="submit" class="btn btn-info" value="Prześlij" style="float: right;">
+{% endblock %}
